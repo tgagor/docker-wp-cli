@@ -8,7 +8,7 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-ENV WP_CLI_VERSION 0.21.1
+ENV WP_CLI_VERSION 0.22.0
 
 RUN if [ "$WP_CLI_VERSION" == "latest" ]; then \
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
