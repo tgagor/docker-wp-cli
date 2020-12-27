@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV WP_CLI_VERSION 1.0.0
+ENV WP_CLI_VERSION 1.1.0
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 
