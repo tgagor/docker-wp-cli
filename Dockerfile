@@ -8,17 +8,17 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV WP_CLI_VERSION 0.24.0
+ENV WP_CLI_VERSION 0.24.1
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 
-RUN if [ "$WP_CLI_VERSION" == "latest" ]; then \
-      curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
+RUN if [ $WP_CLI_VERSION = "latest" ] ; then \
+      curl -f -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
     else \
-      curl -L -o wp-cli.phar https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION}/wp-cli-${WP_CLI_VERSION}.phar; \
+      curl -f -L -o wp-cli.phar https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION}/wp-cli-${WP_CLI_VERSION}.phar; \
     fi && \
     mv wp-cli.phar /usr/local/bin/wp && \
     chmod +x /usr/local/bin/wp && \
-    wp --allow-root --version
+    wp --allow-root --version | grep $WP_CLI_VERSION
 
 CMD ["/usr/local/bin/wp"]
