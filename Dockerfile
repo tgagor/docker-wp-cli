@@ -3,12 +3,12 @@ MAINTAINER tgagor, https://github.com/tgagor
 
 # Install required packages
 RUN apt-get update && \
-    apt-get install -y php-cli php-mysql php-readline curl unzip && \
+    apt-get install -y php-cli php-mysql curl unzip && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV WP_CLI_VERSION 1.2.0
+ENV WP_CLI_VERSION 1.2.1
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 
